@@ -23,3 +23,27 @@ RESPOSTA_ATENDENTE = "O atendente especializado entrará em contato com você pa
 RESPOSTA_CATALOGO = "Exibindo o catálogo de produtos e peças..."
 
 RESPOSTA_NAO_ENTENDI = "Desculpe, não entendi sua pergunta. Poderia reformular?"
+
+
+
+### LOOP DE INTERAÇÃO
+
+MENSAGEM_INICIAL = "Chatbot: Olá! Estou aqui para ajudar com sua motocicleta. Sobre o que você gostaria de saber?"
+
+PERGUNTA_PECA_PRODUTO = """
+Chatbot: Gostaria de saber mais sobre as peças ou produtos que vendemos? 
+* Se sim, responda com 'consultar catalogo'
+* Se não, digite 'sair'
+"""
+
+PERGUNTA_SERVICO_STATUS = """
+Chatbot: Deseja mais detalhes sobre os serviços que foram realizados? 
+* Se sim, responda com 'mais detalhes' 
+* Se não, digite 'sair'.
+"""
+
+PROMOCAO_CATALOGO = "Chatbot: Aproveite as promoções antes que acabe!"
+
+PERGUNTA_ALGO_MAIS = "Chatbot: Há mais alguma coisa sobre a qual você gostaria de saber?"
+
+MENSAGEM_FINAL = "Chatbot: Obrigado por usar o serviço. Até logo!"

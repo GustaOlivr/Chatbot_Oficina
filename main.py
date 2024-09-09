@@ -4,7 +4,7 @@ from nltk.corpus import stopwords
 from nltk.stem import RSLPStemmer
 import os
 
-from respotas_chatbot import RESPOSTA_ATENDENTE, RESPOSTA_CATALOGO, RESPOSTA_DETALHES, RESPOSTA_FINALIZACAO, RESPOSTA_NAO_ENTENDI, RESPOSTA_SERVICOS_REALIZADOS, RESPOSTA_STATUS
+from respotas_chatbot import RESPOSTA_ATENDENTE, RESPOSTA_CATALOGO, RESPOSTA_DETALHES, RESPOSTA_FINALIZACAO, RESPOSTA_NAO_ENTENDI, RESPOSTA_SERVICOS_REALIZADOS, RESPOSTA_STATUS, MENSAGEM_INICIAL, PERGUNTA_PECA_PRODUTO,PERGUNTA_SERVICO_STATUS,PROMOCAO_CATALOGO,PERGUNTA_ALGO_MAIS,MENSAGEM_FINAL
 
 
 # Baixando os recursos necessários do NLTK
@@ -38,7 +38,7 @@ def prever_resposta(pergunta):
         limpar_terminal()
         return RESPOSTA_STATUS
     
-    elif 'serviço' in palavras_pergunta or 'realizados' in palavras_pergunta:
+    elif 'serviço' in palavras_pergunta or 'realizados' in palavras_pergunta or 'serviços   ' in palavras_pergunta:
         limpar_terminal()
         return RESPOSTA_SERVICOS_REALIZADOS
     
@@ -119,7 +119,7 @@ def exibir_catalogo():
 # Função para interação com o usuário (fazendo perguntas)
 def interagir_com_usuario():
     limpar_terminal()
-    print("Chatbot: Olá! Estou aqui para ajudar com sua motocicleta. Sobre o que você gostaria de saber?")
+    print(MENSAGEM_INICIAL)
     pular_linhas(1)
     exibir_opcoes()
 
@@ -128,31 +128,26 @@ def interagir_com_usuario():
         pergunta = input("Você: ")
         
         if pergunta.lower() == "sair":
-            print("Chatbot: Obrigado por usar o serviço. Até logo!")
+            print(MENSAGEM_FINAL)
             break
         
         resposta = prever_resposta(pergunta)
         print(f"Chatbot: {resposta}")
         
-        # Fazer perguntas ao cliente com base no fluxo da conversa
         if 'peças' in pergunta or 'produto' in pergunta:
             pular_linhas(1)
-            print("""Chatbot: Gostaria de saber mais sobre as peças ou produtos que vendemos? 
-* Se sim, responda com 'consultar catalogo'
-* Se não, digite 'sair' """)
+            print(PERGUNTA_PECA_PRODUTO)
             exibir_opcoes()
             
         elif 'catalogo' in pergunta:
             exibir_catalogo()
-            print("Chatbot: Aproveite as promoções antes que acabe!")
+            print(PROMOCAO_CATALOGO)
             pular_linhas(1)
             exibir_opcoes()
             
         elif 'serviço' in pergunta or 'status' in pergunta:
             pular_linhas(1)
-            print("""Chatbot: Deseja mais detalhes sobre os serviços que foram realizados? 
-* Se sim, responda com 'mais detalhes' 
-* Se não, digite 'sair'.""")
+            print(PERGUNTA_SERVICO_STATUS)
             exibir_opcoes()
             
         elif "Desculpe, não entendi sua pergunta" in resposta:
@@ -160,7 +155,7 @@ def interagir_com_usuario():
             
         else:
             pular_linhas(2)
-            print("Chatbot: Há mais alguma coisa sobre a qual você gostaria de saber?")
+            print(PERGUNTA_ALGO_MAIS)
             exibir_opcoes()
 
 # Executando o chatbot
