@@ -46,7 +46,7 @@ def prever_resposta(pergunta):
         limpar_terminal()
         return RESPOSTA_FINALIZACAO
     
-    elif 'mais detalhes' in palavras_pergunta or 'detalhes' in palavras_pergunta:
+    elif 'mais detalhes' in palavras_pergunta or 'detalhes' in palavras_pergunta or 'detalhes da manutenção' in palavras_pergunta:
         limpar_terminal()
         return RESPOSTA_DETALHES
     

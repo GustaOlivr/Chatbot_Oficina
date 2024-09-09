@@ -30,17 +30,9 @@ RESPOSTA_NAO_ENTENDI = "Desculpe, não entendi sua pergunta. Poderia reformular?
 
 MENSAGEM_INICIAL = "Chatbot: Olá! Estou aqui para ajudar com sua motocicleta. Sobre o que você gostaria de saber?"
 
-PERGUNTA_PECA_PRODUTO = """
-Chatbot: Gostaria de saber mais sobre as peças ou produtos que vendemos? 
-* Se sim, responda com 'consultar catalogo'
-* Se não, digite 'sair'
-"""
+PERGUNTA_PECA_PRODUTO = "Chatbot: Nossos produtos garantem qualidade e vida util para sua motocicleta. Há algo mais que podemos lhe ajudar?"
 
-PERGUNTA_SERVICO_STATUS = """
-Chatbot: Deseja mais detalhes sobre os serviços que foram realizados? 
-* Se sim, responda com 'mais detalhes' 
-* Se não, digite 'sair'.
-"""
+PERGUNTA_SERVICO_STATUS = "Chatbot: Logo mais sua moto estará de volta as ruas! Há algo mais que podemos lhe ajudar?"
 
 PROMOCAO_CATALOGO = "Chatbot: Aproveite as promoções antes que acabe!"
 
