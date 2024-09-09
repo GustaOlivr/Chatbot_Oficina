@@ -48,10 +48,6 @@ def prever_resposta(pergunta):
         limpar_terminal()
         return "O serviço tem previsão de ser concluído até as 10 horas de amanhã."
     
-    elif 'peça' in palavras_pergunta or 'produto' in palavras_pergunta or 'catalogo' in palavras_pergunta:
-        limpar_terminal()
-        return "Vendemos peças para motocicletas, capacetes e outros produtos relacionados."
-    
     elif 'mais detalhes' in palavras_pergunta or 'detalhes' in palavras_pergunta:
         limpar_terminal()
         return """ Detalhes do serviço:
@@ -61,7 +57,7 @@ def prever_resposta(pergunta):
     
     elif 'atendente' in palavras_pergunta or 'conversar com atendente' in palavras_pergunta:
         limpar_terminal()
-        return "O atendente especializado entrará em contato com você para melhor atende-lo"
+        return "O atendente especializado entrará em contato com você para melhor atendê-lo."
     
     else:
         limpar_terminal()
@@ -89,9 +85,39 @@ def exibir_opcoes():
         print(opcao)
 
 def limpar_terminal():
-    os.system('cls')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
-    
+# Função para exibir o catálogo de produtos
+def exibir_catalogo():
+    catalogo = [
+        "1. Capacete X-Rider - R$ 299,00",
+        "2. Luvas de Motociclista - R$ 149,00",
+        "3. Jaqueta de Couro - R$ 499,00",
+        "4. Botas de Motociclista - R$ 349,00",
+        "5. Óleo Sintético 10w-40 - R$ 89,00",
+        "6. Filtro de Ar Yamaha - R$ 59,00",
+        "7. Disco de Freio Dianteiro - R$ 149,00",
+        "8. Pastilhas de Freio Dianteiras - R$ 89,00",
+        "9. Espelho Retrovisor - R$ 75,00",
+        "10. Amortecedor Traseiro - R$ 399,00",
+        "11. Guidão Ajustável - R$ 120,00",
+        "12. Manoplas de Acelerador - R$ 40,00",
+        "13. Lanterna Traseira LED - R$ 95,00",
+        "14. Farol Halógeno - R$ 150,00",
+        "15. Bateria 12V - R$ 180,00",
+        "16. Capa de Moto - R$ 75,00",
+        "17. Suporte para GPS - R$ 60,00",
+        "18. Sistema de Alarme - R$ 220,00",
+        "19. Protetor de Motor - R$ 130,00",
+        "20. Kit de Ferramentas - R$ 110,00"
+    ]
+    print("Catálogo de Produtos e Peças:")
+    pular_linhas(1)
+    for item in catalogo:
+        print(item)
+    pular_linhas(1)
+    exibir_opcoes()
+
 # Função para interação com o usuário (fazendo perguntas)
 def interagir_com_usuario():
     limpar_terminal()
@@ -112,18 +138,26 @@ def interagir_com_usuario():
         
         # Fazer perguntas ao cliente com base no fluxo da conversa
         if 'peças' in pergunta or 'produto' in pergunta:
+            pular_linhas(1)
             print("""Chatbot: Gostaria de saber mais sobre as peças ou produtos que vendemos? 
 * Se sim, responda com 'consultar catalogo'
 * Se não, digite 'sair' """)
+            
+        elif 'consultar catalogo' in pergunta.lower():
+            limpar_terminal()
+            exibir_catalogo()
+            
         elif 'serviço' in pergunta or 'status' in pergunta:
             pular_linhas(1)
             print("""Chatbot: Deseja mais detalhes sobre os serviços que foram realizados? 
-* Se sim responda com 'mais detalhes' 
+* Se sim, responda com 'mais detalhes' 
 * Se não, digite 'sair'.""")
+            
         elif "Desculpe, não entendi sua pergunta" in resposta:
             pular_linhas(1)
+            
         else:
-            pular_linhas(2) 
+            pular_linhas(2)
             print("Chatbot: Há mais alguma coisa sobre a qual você gostaria de saber?")
             exibir_opcoes()
 
