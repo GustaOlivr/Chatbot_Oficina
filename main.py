@@ -4,6 +4,9 @@ from nltk.corpus import stopwords
 from nltk.stem import RSLPStemmer
 import os
 
+from respotas_chatbot import RESPOSTA_ATENDENTE, RESPOSTA_CATALOGO, RESPOSTA_DETALHES, RESPOSTA_FINALIZACAO, RESPOSTA_NAO_ENTENDI, RESPOSTA_SERVICOS_REALIZADOS, RESPOSTA_STATUS
+
+
 # Baixando os recursos necessários do NLTK
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -31,41 +34,33 @@ palavras_processadas_base = processar_texto(texto_base)
 def prever_resposta(pergunta):
     palavras_pergunta = processar_texto(pergunta)
     
-    # Simulação de árvore de decisão com if-else
     if 'status' in palavras_pergunta or 'manutenção' in palavras_pergunta:
         limpar_terminal()
-        return "A manutenção da sua moto está em progresso e tem previsão de ser finalizada até as 10 horas do próximo dia."
+        return RESPOSTA_STATUS
     
     elif 'serviço' in palavras_pergunta or 'realizados' in palavras_pergunta:
         limpar_terminal()
-        return """Os serviços solicitados incluem:
-        * Troca de óleo - cód: 1548;
-        * Troca do filtro de óleo - cód: 6523;
-        * Troca dos freios dianteiros - cód: 5487;"""
+        return RESPOSTA_SERVICOS_REALIZADOS
     
     elif 'finalização' in palavras_pergunta or 'pronta' in palavras_pergunta:
         limpar_terminal()
-        return "O serviço tem previsão de ser concluído até as 10 horas de amanhã."
+        return RESPOSTA_FINALIZACAO
     
     elif 'mais detalhes' in palavras_pergunta or 'detalhes' in palavras_pergunta:
         limpar_terminal()
-        return """ Detalhes do serviço:
-        * Troca de óleo - Yamalube 20w-50
-        * Troca do filtro de óleo - Filtro De Oleo Fazer Lander Tenere 250 X-max Original Yamaha
-        * Troca dos freios dianteiros - Disco Freio Dianteiro Fazer 250 Fz 15 2018 Até 2024 - MTBR"""
+        return RESPOSTA_DETALHES
     
     elif 'atendente' in palavras_pergunta or 'conversar com atendente' in palavras_pergunta:
         limpar_terminal()
-        return "O atendente especializado entrará em contato com você para melhor atendê-lo."
+        return RESPOSTA_ATENDENTE
     
     elif 'catalogo' in palavras_pergunta or 'produto' in palavras_pergunta or 'venda' in palavras_pergunta or 'produtos' in palavras_pergunta:
         limpar_terminal()
-        return "Exibindo o catálogo de produtos e peças..."
+        return RESPOSTA_CATALOGO
     
     else:
         limpar_terminal()
-        return "Desculpe, não entendi sua pergunta. Poderia reformular?"
-
+        return RESPOSTA_NAO_ENTENDI
 # Lista de opções
 opcoes = [
     "1. Verificar status da manutenção",
@@ -145,6 +140,7 @@ def interagir_com_usuario():
             print("""Chatbot: Gostaria de saber mais sobre as peças ou produtos que vendemos? 
 * Se sim, responda com 'consultar catalogo'
 * Se não, digite 'sair' """)
+            exibir_opcoes()
             
         elif 'catalogo' in pergunta:
             exibir_catalogo()
@@ -157,6 +153,7 @@ def interagir_com_usuario():
             print("""Chatbot: Deseja mais detalhes sobre os serviços que foram realizados? 
 * Se sim, responda com 'mais detalhes' 
 * Se não, digite 'sair'.""")
+            exibir_opcoes()
             
         elif "Desculpe, não entendi sua pergunta" in resposta:
             pular_linhas(1)
