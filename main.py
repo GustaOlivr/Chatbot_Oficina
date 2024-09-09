@@ -4,7 +4,6 @@ from nltk.corpus import stopwords
 from nltk.stem import RSLPStemmer
 import os
 
-
 # Baixando os recursos necessários do NLTK
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -59,6 +58,10 @@ def prever_resposta(pergunta):
         limpar_terminal()
         return "O atendente especializado entrará em contato com você para melhor atendê-lo."
     
+    elif 'catalogo' in palavras_pergunta or 'produto' in palavras_pergunta or 'venda' in palavras_pergunta or 'produtos' in palavras_pergunta:
+        limpar_terminal()
+        return "Exibindo o catálogo de produtos e peças..."
+    
     else:
         limpar_terminal()
         return "Desculpe, não entendi sua pergunta. Poderia reformular?"
@@ -68,8 +71,9 @@ opcoes = [
     "1. Verificar status da manutenção",
     "2. Consultar serviços realizados",
     "3. Consultar catalogo de venda de produtos e peças",
-    "4. Falar com um atendente",
-    "5. Sair"
+    "4. Ver detalhes da manutenção",
+    "5. Falar com um atendente",
+    "6. Sair"
 ]
 
 # Pular linha no output
@@ -116,7 +120,6 @@ def exibir_catalogo():
     for item in catalogo:
         print(item)
     pular_linhas(1)
-    exibir_opcoes()
 
 # Função para interação com o usuário (fazendo perguntas)
 def interagir_com_usuario():
@@ -143,9 +146,11 @@ def interagir_com_usuario():
 * Se sim, responda com 'consultar catalogo'
 * Se não, digite 'sair' """)
             
-        elif 'consultar catalogo' in pergunta.lower():
-            limpar_terminal()
+        elif 'catalogo' in pergunta:
             exibir_catalogo()
+            print("Chatbot: Aproveite as promoções antes que acabe!")
+            pular_linhas(1)
+            exibir_opcoes()
             
         elif 'serviço' in pergunta or 'status' in pergunta:
             pular_linhas(1)
