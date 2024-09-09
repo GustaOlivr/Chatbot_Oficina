@@ -3,7 +3,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import RSLPStemmer
 
-from chatbot.utils import interagir_com_usuario, limpar_terminal, opcoes
+from utils import interagir_com_usuario, limpar_terminal, opcoes
 from respotas_chatbot import RESPOSTA_ATENDENTE, RESPOSTA_CATALOGO, RESPOSTA_DETALHES, RESPOSTA_FINALIZACAO, RESPOSTA_NAO_ENTENDI, RESPOSTA_SERVICOS_REALIZADOS, RESPOSTA_STATUS, MENSAGEM_INICIAL, PERGUNTA_PECA_PRODUTO,PERGUNTA_SERVICO_STATUS,PROMOCAO_CATALOGO,PERGUNTA_ALGO_MAIS,MENSAGEM_FINAL
 
 
