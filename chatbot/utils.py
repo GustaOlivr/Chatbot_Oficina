@@ -30,7 +30,7 @@ def exibir_catalogo():
         print(item)
     pular_linhas(1)
 
-# Pular linha no output
+# Função para pular linha no output
 def pular_linhas(num_linhas=1):
     """Imprime um número específico de linhas em branco."""
     print('\n' * num_linhas)
@@ -52,7 +52,7 @@ def exibir_opcoes(opcoes):
     for opcao in opcoes:
         print(opcao)
 
-# Limpar o terminal
+# Função para limpar o terminal
 def limpar_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 

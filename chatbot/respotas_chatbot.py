@@ -1,4 +1,4 @@
-# respostas_chatbot.py
+# Respostas padronizadas
 
 RESPOSTA_STATUS = "A manutenção da sua moto está em progresso e tem previsão de ser finalizada até as 10 horas do próximo dia."
 

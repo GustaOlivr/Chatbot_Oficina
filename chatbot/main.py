@@ -7,7 +7,7 @@ from utils import interagir_com_usuario, limpar_terminal, opcoes
 from respotas_chatbot import RESPOSTA_ATENDENTE, RESPOSTA_CATALOGO, RESPOSTA_DETALHES, RESPOSTA_FINALIZACAO, RESPOSTA_NAO_ENTENDI, RESPOSTA_SERVICOS_REALIZADOS, RESPOSTA_STATUS, MENSAGEM_INICIAL, PERGUNTA_PECA_PRODUTO,PERGUNTA_SERVICO_STATUS,PROMOCAO_CATALOGO,PERGUNTA_ALGO_MAIS,MENSAGEM_FINAL
 
 
-# Baixando os recursos necessários do NLTK
+# Baixa os recursos necessários do NLTK
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('rslp')
@@ -19,15 +19,21 @@ troca de óleo, troca do filtro de óleo e troca dos freios dianteiros. A manute
 o status de 'Em progresso' e tem previsão de ser finalizada até as 10 horas do próximo dia.
 """
 
-# PNL - Processamento de texto: Tokenização e remoção de stopwords
+# PNL - Processamento de texto: Tokenização
 def processar_texto(texto):
+
+    #Tokenização
     palavras = word_tokenize(texto.lower())
+
+    #remoção de stopwords
     stop_words = set(stopwords.words('portuguese'))
+
+    #Filtragem de palavras
     palavras_filtradas = [palavra for palavra in palavras if palavra.isalnum() and palavra not in stop_words]
     
     return palavras_filtradas
 
-# Processar o texto base
+# Processa o texto base
 palavras_processadas_base = processar_texto(texto_base)
 
 # Função para prever a resposta do chatbot usando if-else
@@ -62,5 +68,5 @@ def prever_resposta(pergunta):
         limpar_terminal()
         return RESPOSTA_NAO_ENTENDI
 
-# Executando o chatbot
+# Executa o chatbot
 interagir_com_usuario(MENSAGEM_INICIAL, MENSAGEM_FINAL, PERGUNTA_PECA_PRODUTO, PROMOCAO_CATALOGO, PERGUNTA_SERVICO_STATUS, PERGUNTA_ALGO_MAIS, opcoes, prever_resposta)
