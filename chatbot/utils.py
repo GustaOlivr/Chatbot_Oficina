@@ -40,7 +40,7 @@ opcoes = [
     "1. Verificar status da manutenção",
     "2. Consultar serviços realizados",
     "3. Consultar catalogo de venda de produtos e peças",
-    "4. Ver detalhes da manutenção",
+    "4. Ver mais detalhes",
     "5. Falar com um atendente",
     "6. Sair"
 ]
@@ -94,6 +94,6 @@ def interagir_com_usuario(MENSAGEM_INICIAL, MENSAGEM_FINAL, PERGUNTA_PECA_PRODUT
             pular_linhas(1)
             
         else:
-            pular_linhas(2)
+            pular_linhas(1)
             print(PERGUNTA_ALGO_MAIS)
             exibir_opcoes(opcoes)
